@@ -17,6 +17,10 @@ class ParserTenders {
             Log.Logger("Не найден список тендеров", urlGetTenders);
             System.exit(0);
         }
+        for (DataTen d: Tlist.result.data
+             ) {
+            System.out.println(d.close_date);
+        }
 
     }
 }

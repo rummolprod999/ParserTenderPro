@@ -68,7 +68,8 @@ public class Main {
         try {
             p.Parser();
         } catch (Exception e) {
-            Log.Logger("Error Main function", e.getStackTrace());
+            Log.Logger("Error Main function", e);
+            e.printStackTrace();
         }
         Log.Logger("Конец парсинга");
     }
