@@ -19,6 +19,7 @@ class DataTen {
     String finish_date;
     String company_name;
     String type_name;
+    int type_id;
     String delivery_address;
     String currency_name;
     String title;
@@ -37,7 +38,23 @@ class ResultT {
 
 }
 
+class TypeCompany{
+    ResultC result;
+}
 
+class ResultC {
+    DataC data;
 
+}
 
-
+class DataC{
+    String address_legal;
+    String title_full;
+    String fax;
+    String address;
+    String country_name;
+    String phone;
+    String kpp;
+    String inn;
+    String site;
+}
