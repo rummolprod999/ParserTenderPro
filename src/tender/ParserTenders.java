@@ -166,7 +166,7 @@ class ParserTenders implements Iparser {
             int IdEtp = 0;
             String etpName = "Tender.Pro";
             String etpUrl = "http://Tender.Pro";
-            if(true){
+            if (true) {
                 PreparedStatement stmto = con.prepareStatement(String.format("SELECT id_etp FROM %setp WHERE name = ? AND url = ? LIMIT 1", Main.Prefix));
                 stmto.setString(1, etpName);
                 stmto.setString(2, etpUrl);
@@ -194,10 +194,7 @@ class ParserTenders implements Iparser {
             String UrlXml = Href;
 
             System.out.println(IdEtp);
-
-
         }
-
     }
 
     //System.out.println(FinishDate);
