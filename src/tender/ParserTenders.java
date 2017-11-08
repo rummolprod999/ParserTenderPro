@@ -204,7 +204,7 @@ class ParserTenders implements Iparser {
         Date d = new Date(0L);
         try {
             d = (Date) formatter.parseObject(dt);
-        } catch (ParseException e) {
+        } catch (ParseException ignored) {
 
         }
         return d;
