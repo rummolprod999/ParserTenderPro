@@ -22,9 +22,21 @@ class DataTen {
     String delivery_address;
     String currency_name;
     String title;
+    String anno;
 
 
 }
+
+class TypeTender {
+    ResultT result;
+}
+
+class ResultT {
+    DataTen data;
+
+
+}
+
 
 
 

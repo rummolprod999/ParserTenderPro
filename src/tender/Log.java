@@ -10,7 +10,15 @@ class Log {
         StringBuilder s = new StringBuilder();
         s.append(new Date());
         for (T p : parametrs) {
-            s.append(String.format(" %s\n", p.toString()));
+            if(p instanceof StackTraceElement[]){
+                for(StackTraceElement n: (StackTraceElement[])p){
+                    s.append(String.format(" %s\n", n.toString()));
+                }
+            }
+            else{
+                s.append(String.format(" %s\n", p.toString()));
+            }
+
         }
         try (FileWriter writer = new FileWriter(Main.logPath, true)) {
             writer.write(String.valueOf(s));

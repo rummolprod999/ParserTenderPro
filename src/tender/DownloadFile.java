@@ -1,9 +1,9 @@
 package tender;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 class DownloadFile {
     static String DownloadFromUrl(String urls) {
@@ -33,4 +33,9 @@ class DownloadFile {
         }
         return s.toString();
     }
+
+    static String ReadJsonFile() throws IOException {
+        return new String(Files.readAllBytes(Paths.get(Main.executePath + File.separator + "11111.txt")));
+    }
 }
+
