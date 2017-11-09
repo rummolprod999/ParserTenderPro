@@ -8,6 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="mysql:mysql-connector-java:5.1.44" level="project" />
-    <orderEntry type="library" name="com.google.code.gson:gson:2.8.2" level="project" />
+    <orderEntry type="library" exported="" name="com.google.code.gson:gson:2.8.2" level="project" />
+    <orderEntry type="library" exported="" name="org.jsoup:jsoup:1.11.1" level="project" />
   </component>
 </module>

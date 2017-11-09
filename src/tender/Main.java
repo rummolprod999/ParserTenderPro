@@ -18,6 +18,7 @@ public class Main {
     public static int Port;
     public static String logPath;
     public static Date DateNow = new Date();
+    public static int AddTender;
 
     public static void main(String[] args) {
         Init();
@@ -71,6 +72,7 @@ public class Main {
             Log.Logger("Error Main function", e.getStackTrace(), e);
             e.printStackTrace();
         }
+        Log.Logger(String.format("Добавили тендеров %d", AddTender));
         Log.Logger("Конец парсинга");
     }
 }
