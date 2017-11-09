@@ -24,22 +24,22 @@ class DataTen {
     String currency_name;
     String title;
     String anno;
+    String message;
 
 
 }
 
 class TypeTender {
+    DataTen error;
     String success;
     ResultT result;
 }
 
 class ResultT {
     DataTen data;
-
-
 }
 
-class TypeCompany{
+class TypeCompany {
     ResultC result;
 }
 
@@ -48,7 +48,7 @@ class ResultC {
 
 }
 
-class DataC{
+class DataC {
     String address_legal;
     String title_full;
     String fax;

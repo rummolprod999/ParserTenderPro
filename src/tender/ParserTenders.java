@@ -55,12 +55,12 @@ class ParserTenders implements Iparser {
         }
         Gson gson = new Gson();
         TypeTender t = gson.fromJson(s, TypeTender.class);
-        if(Objects.equals(t.success, "false")){
-            Log.Logger("Неудачная попытка скачать тендер", d.id);
+        if(t.error != null && t.error.message != null){
+            Log.Logger("Неудачная попытка скачать тендер", d.id, d.company_id, t.error.message);
             return;
         }
         if(t == null){
-            Log.Logger(s);
+            Log.Logger("Не создан объект тендера", s);
             return;
         }
         try {
@@ -69,7 +69,7 @@ class ParserTenders implements Iparser {
                 return;
             }
         } catch (Exception e) {
-            Log.Logger(s, d.id, d.company_id);
+            Log.Logger("Ошибки в объекте тендера", s, d.id, d.company_id);
             return;
         }
         //System.out.println(t.result.data.id);
