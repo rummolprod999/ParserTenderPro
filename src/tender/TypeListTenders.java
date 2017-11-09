@@ -29,6 +29,7 @@ class DataTen {
 }
 
 class TypeTender {
+    String success;
     ResultT result;
 }
 

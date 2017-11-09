@@ -55,8 +55,21 @@ class ParserTenders implements Iparser {
         }
         Gson gson = new Gson();
         TypeTender t = gson.fromJson(s, TypeTender.class);
-        if (t.result.data.id == 0 || t.result.data.is_223fz == 1) {
-            Log.Logger("Нет номера у тендера или 223 тендер");
+        if(Objects.equals(t.success, "false")){
+            Log.Logger("Неудачная попытка скачать тендер", d.id);
+            return;
+        }
+        if(t == null){
+            Log.Logger(s);
+            return;
+        }
+        try {
+            if (t.result.data.id == 0 || t.result.data.is_223fz == 1) {
+                Log.Logger("Нет номера у тендера или 223 тендер");
+                return;
+            }
+        } catch (Exception e) {
+            Log.Logger(s, d.id, d.company_id);
             return;
         }
         //System.out.println(t.result.data.id);
@@ -75,7 +88,7 @@ class ParserTenders implements Iparser {
             if (r.next()) {
                 stmt0.close();
                 r.close();
-                Log.Logger("Такой тендер уже есть в базе", String.valueOf(t.result.data.id));
+                //Log.Logger("Такой тендер уже есть в базе", String.valueOf(t.result.data.id));
                 return;
             }
             PreparedStatement stmt = con.prepareStatement(String.format("SELECT id_tender, date_version FROM %stender WHERE purchase_number = ? AND cancel=0 AND type_fz = 4", Main.Prefix));
