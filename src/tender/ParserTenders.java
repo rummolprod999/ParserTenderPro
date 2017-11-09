@@ -13,7 +13,7 @@ import java.util.Objects;
 class ParserTenders implements Iparser {
     private Format formatter = new SimpleDateFormat("dd.MM.yyyy");
     private String urlGetTenders = "http://www.tender.pro/api/_info.tenderlist_by_set.json?_key=1732ede4de680a0c93d81f01d7bac7d1&set_type_id=2&set_id=2&max_rows=1000&open_only=t";
-    private String UrlConnect = String.format("jdbc:mysql://%s:%d/%s?jdbcCompliantTruncation=false", Main.Server, Main.Port, Main.Database);
+    private String UrlConnect = String.format("jdbc:mysql://%s:%d/%s?jdbcCompliantTruncation=false&useUnicode=true&characterEncoding=utf-8", Main.Server, Main.Port, Main.Database);
 
     public void Parser() {
         /*String s = "";
@@ -221,7 +221,7 @@ class ParserTenders implements Iparser {
             int typeFz = 0;
             int idTender = 0;
             int Version = 0;
-            String UrlXml = Href;
+            String UrlXml = urlTender;
             NoticeVersion = (t.result.data.anno != null) ? Jsoup.parse(t.result.data.anno).text() : "";
             PreparedStatement insertTender = con.prepareStatement(String.format("INSERT INTO %stender SET id_region = 0, id_xml = ?, purchase_number = ?, doc_publish_date = ?, href = ?, purchase_object_info = ?, type_fz = ?, id_organizer = ?, id_placing_way = ?, id_etp = ?, end_date = ?, cancel = ?, date_version = ?, num_version = ?, notice_version = ?, xml = ?, print_form = ?", Main.Prefix), Statement.RETURN_GENERATED_KEYS);
             insertTender.setString(1, String.valueOf(t.result.data.id));
