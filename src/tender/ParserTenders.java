@@ -12,7 +12,6 @@ import java.util.Objects;
 
 class ParserTenders implements Iparser {
     private Format formatter = new SimpleDateFormat("dd.MM.yyyy");
-    private String urlGetTenders = "http://www.tender.pro/api/_info.tenderlist_by_set.json?_key=1732ede4de680a0c93d81f01d7bac7d1&set_type_id=2&set_id=2&max_rows=1000&open_only=t";
     private String UrlConnect = String.format("jdbc:mysql://%s:%d/%s?jdbcCompliantTruncation=false&useUnicode=true&characterEncoding=utf-8", Main.Server, Main.Port, Main.Database);
 
     public void Parser() {
@@ -23,6 +22,7 @@ class ParserTenders implements Iparser {
             e.printStackTrace();
         }
         System.out.println(s);*/
+        String urlGetTenders = "http://www.tender.pro/api/_info.tenderlist_by_set.json?_key=1732ede4de680a0c93d81f01d7bac7d1&set_type_id=2&set_id=2&max_rows=1000&open_only=t";
         String s = DownloadFile.DownloadFromUrl(urlGetTenders);
         if (s.equals("") || s.isEmpty()) {
             Log.Logger("Получили пустую строку", urlGetTenders);
@@ -54,17 +54,21 @@ class ParserTenders implements Iparser {
             return;
         }
         Gson gson = new Gson();
-        TypeTender t = gson.fromJson(s, TypeTender.class);
-        if(t.error != null && t.error.message != null){
-            Log.Logger("Неудачная попытка скачать тендер", d.id, d.company_id, t.error.message);
-            return;
+        TypeTender tt = gson.fromJson(s, TypeTender.class);
+        DataTen t = null;
+        if (tt != null && tt.result != null && tt.result.data != null) {
+            t = tt.result.data;
         }
-        if(t == null){
+        if (tt.error != null && tt.error.message != null) {
+            Log.Logger("Неудачная попытка скачать тендер, берем объект из списка", d.id, d.company_id, tt.error.message);
+            t = d;
+        }
+        if (t == null) {
             Log.Logger("Не создан объект тендера", s);
             return;
         }
         try {
-            if (t.result.data.id == 0 || t.result.data.is_223fz == 1) {
+            if (t.id == 0 || t.is_223fz == 1) {
                 Log.Logger("Нет номера у тендера или 223 тендер");
                 return;
             }
@@ -72,27 +76,24 @@ class ParserTenders implements Iparser {
             Log.Logger("Ошибки в объекте тендера", s, d.id, d.company_id);
             return;
         }
-        //System.out.println(t.result.data.id);
-        Date OpenDate = (t.result.data.open_date != null) ? GetDate(t.result.data.open_date) : new Date(0L);
-        Date CloseDate = (t.result.data.close_date != null) ? GetDate(t.result.data.close_date) : new Date(0L);
-        Date ShipDate = (t.result.data.ship_date != null) ? GetDate(t.result.data.ship_date) : new Date(0L);
-        Date FinishDate = (t.result.data.finish_date != null) ? GetDate(t.result.data.finish_date) : new Date(0L);
-        Date dateVersion = OpenDate;
+        //System.out.println(t.id);
+        Date OpenDate = (t.open_date != null) ? GetDate(t.open_date) : new Date(0L);
+        Date CloseDate = (t.close_date != null) ? GetDate(t.close_date) : new Date(0L);
         int cancelstatus = 0;
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         try (Connection con = DriverManager.getConnection(UrlConnect, Main.UserDb, Main.PassDb)) {
             PreparedStatement stmt0 = con.prepareStatement(String.format("SELECT id_tender FROM %stender WHERE purchase_number = ? AND date_version = ? AND type_fz = 4", Main.Prefix));
-            stmt0.setString(1, String.valueOf(t.result.data.id));
-            stmt0.setDate(2, new java.sql.Date(dateVersion.getTime()));
+            stmt0.setString(1, String.valueOf(t.id));
+            stmt0.setDate(2, new java.sql.Date(OpenDate.getTime()));
             ResultSet r = stmt0.executeQuery();
             if (r.next()) {
                 stmt0.close();
                 r.close();
-                //Log.Logger("Такой тендер уже есть в базе", String.valueOf(t.result.data.id));
+                //Log.Logger("Такой тендер уже есть в базе", String.valueOf(t.id));
                 return;
             }
             PreparedStatement stmt = con.prepareStatement(String.format("SELECT id_tender, date_version FROM %stender WHERE purchase_number = ? AND cancel=0 AND type_fz = 4", Main.Prefix));
-            stmt.setInt(1, t.result.data.id);
+            stmt.setInt(1, t.id);
             ResultSet rs = stmt.executeQuery();
             //stmt.executeQuery("SET GLOBAL sql_mode=''");
             while (rs.next()) {
@@ -100,7 +101,7 @@ class ParserTenders implements Iparser {
                 Date date_b = rs.getTimestamp(2);
                 /*System.out.println(date_b);
                 System.out.println(dateVersion);*/
-                if (dateVersion.after(date_b) || (date_b.equals(dateVersion))) {
+                if (OpenDate.after(date_b) || (date_b.equals(OpenDate))) {
                     PreparedStatement preparedStatement = con.prepareStatement(String.format("UPDATE %stender SET cancel=1 WHERE id_tender = ?", Main.Prefix));
                     preparedStatement.setInt(1, id_t);
                     preparedStatement.execute();
@@ -112,14 +113,13 @@ class ParserTenders implements Iparser {
             }
             rs.close();
             stmt.close();
-            String Href = String.format("http://www.tender.pro/view_tender_public.shtml?tenderid=%d", t.result.data.id);
-            String PurchaseObjectInfo = (t.result.data.title == null) ? "" : t.result.data.title;
-            String NoticeVersion = "";
-            String PrintForm = Href;
+            String Href = String.format("http://www.tender.pro/view_tender_public.shtml?tenderid=%d", t.id);
+            String PurchaseObjectInfo = (t.title == null) ? "" : t.title;
+            String NoticeVersion;
             int IdOrganizer = 0;
             TypeCompany c = null;
-            if (t.result.data.company_id != 0) {
-                String UrlCompany = String.format("http://www.tender.pro/api/_company.info_public.json?id=%s", t.result.data.company_id);
+            if (t.company_id != 0) {
+                String UrlCompany = String.format("http://www.tender.pro/api/_company.info_public.json?id=%s", t.company_id);
                 String com = DownloadFile.DownloadFromUrl(UrlCompany);
                 if (com.equals("") || com.isEmpty()) {
                     Log.Logger("Получили пустую строку компании", UrlCompany);
@@ -127,7 +127,7 @@ class ParserTenders implements Iparser {
                 } else {
                     Gson gsonc = new Gson();
                     c = gsonc.fromJson(com, TypeCompany.class);
-                    if (!Objects.equals(c.result.data.inn, "") && c.result.data.inn != null) {
+                    if (c != null && c.result != null && c.result.data != null && c.result.data.inn != null && !Objects.equals(c.result.data.inn, "")) {
                         PreparedStatement stmto = con.prepareStatement(String.format("SELECT id_organizer FROM %sorganizer WHERE inn = ? AND kpp = ?", Main.Prefix));
                         stmto.setString(1, c.result.data.inn);
                         stmto.setString(2, (c.result.data.kpp == null) ? "" : c.result.data.kpp);
@@ -162,10 +162,10 @@ class ParserTenders implements Iparser {
 
             }
             int IdPlacingWay = 0;
-            if (!Objects.equals(t.result.data.type_name, "") && t.result.data.type_name != null) {
+            if (!Objects.equals(t.type_name, "") && t.type_name != null) {
                 PreparedStatement stmto = con.prepareStatement(String.format("SELECT id_placing_way FROM %splacing_way WHERE name = ? AND code = ? LIMIT 1", Main.Prefix));
-                stmto.setString(1, t.result.data.type_name);
-                stmto.setString(2, String.valueOf(t.result.data.type_id));
+                stmto.setString(1, t.type_name);
+                stmto.setString(2, String.valueOf(t.type_id));
                 ResultSet rso = stmto.executeQuery();
                 if (rso.next()) {
                     IdPlacingWay = rso.getInt(1);
@@ -174,11 +174,11 @@ class ParserTenders implements Iparser {
                 } else {
                     rso.close();
                     stmto.close();
-                    int conf = GetConformity(t.result.data.type_name);
+                    int conf = GetConformity(t.type_name);
                     PreparedStatement stmtins = con.prepareStatement(String.format("INSERT INTO %splacing_way SET name = ?, conformity = ?, code = ?", Main.Prefix), Statement.RETURN_GENERATED_KEYS);
-                    stmtins.setString(1, t.result.data.type_name);
+                    stmtins.setString(1, t.type_name);
                     stmtins.setInt(2, conf);
-                    stmtins.setString(3, String.valueOf(t.result.data.type_id));
+                    stmtins.setString(3, String.valueOf(t.type_id));
                     stmtins.executeUpdate();
                     ResultSet rsoi = stmtins.getGeneratedKeys();
                     if (rsoi.next()) {
@@ -194,7 +194,7 @@ class ParserTenders implements Iparser {
             int IdEtp = 0;
             String etpName = "Tender.Pro";
             String etpUrl = "http://Tender.Pro";
-            if (true) {
+            try {
                 PreparedStatement stmto = con.prepareStatement(String.format("SELECT id_etp FROM %setp WHERE name = ? AND url = ? LIMIT 1", Main.Prefix));
                 stmto.setString(1, etpName);
                 stmto.setString(2, etpUrl);
@@ -218,14 +218,14 @@ class ParserTenders implements Iparser {
                     stmtins.close();
                 }
             }
-            int typeFz = 0;
+            catch(Exception ignored){
+
+            }
             int idTender = 0;
-            int Version = 0;
-            String UrlXml = urlTender;
-            NoticeVersion = (t.result.data.anno != null) ? Jsoup.parse(t.result.data.anno).text() : "";
+            NoticeVersion = (t.anno != null) ? Jsoup.parse(t.anno).text() : "";
             PreparedStatement insertTender = con.prepareStatement(String.format("INSERT INTO %stender SET id_region = 0, id_xml = ?, purchase_number = ?, doc_publish_date = ?, href = ?, purchase_object_info = ?, type_fz = ?, id_organizer = ?, id_placing_way = ?, id_etp = ?, end_date = ?, cancel = ?, date_version = ?, num_version = ?, notice_version = ?, xml = ?, print_form = ?", Main.Prefix), Statement.RETURN_GENERATED_KEYS);
-            insertTender.setString(1, String.valueOf(t.result.data.id));
-            insertTender.setString(2, String.valueOf(t.result.data.id));
+            insertTender.setString(1, String.valueOf(t.id));
+            insertTender.setString(2, String.valueOf(t.id));
             insertTender.setDate(3, new java.sql.Date(OpenDate.getTime()));
             insertTender.setString(4, Href);
             insertTender.setString(5, PurchaseObjectInfo);
@@ -235,11 +235,11 @@ class ParserTenders implements Iparser {
             insertTender.setInt(9, IdEtp);
             insertTender.setDate(10, new java.sql.Date(CloseDate.getTime()));
             insertTender.setInt(11, cancelstatus);
-            insertTender.setDate(12, new java.sql.Date(dateVersion.getTime()));
+            insertTender.setDate(12, new java.sql.Date(OpenDate.getTime()));
             insertTender.setInt(13, 1);
             insertTender.setString(14, NoticeVersion);
-            insertTender.setString(15, UrlXml);
-            insertTender.setString(16, PrintForm);
+            insertTender.setString(15, urlTender);
+            insertTender.setString(16, Href);
             insertTender.executeUpdate();
             ResultSet rt = insertTender.getGeneratedKeys();
             if (rt.next()) {
@@ -253,7 +253,7 @@ class ParserTenders implements Iparser {
             PreparedStatement insertLot = con.prepareStatement(String.format("INSERT INTO %slot SET id_tender = ?, lot_number = ?, currency = ?", Main.Prefix), Statement.RETURN_GENERATED_KEYS);
             insertLot.setInt(1, idTender);
             insertLot.setInt(2, LotNumber);
-            insertLot.setString(3, (t.result.data.currency_name == null) ? "" : t.result.data.currency_name);
+            insertLot.setString(3, (t.currency_name == null) ? "" : t.currency_name);
             insertLot.executeUpdate();
             ResultSet rl = insertLot.getGeneratedKeys();
             if (rl.next()) {
@@ -263,7 +263,7 @@ class ParserTenders implements Iparser {
             insertLot.close();
             int idCustomer = 0;
             if (c != null) {
-                if (!Objects.equals(c.result.data.inn, "") && c.result.data.inn != null) {
+                if (c != null && c.result != null && c.result.data != null && c.result.data.inn != null && !Objects.equals(c.result.data.inn, "")) {
                     PreparedStatement stmto = con.prepareStatement(String.format("SELECT id_customer FROM %scustomer WHERE inn = ? LIMIT 1", Main.Prefix));
                     stmto.setString(1, c.result.data.inn);
                     ResultSet rso = stmto.executeQuery();
@@ -297,11 +297,11 @@ class ParserTenders implements Iparser {
                 insertCusRec.executeUpdate();
                 insertCusRec.close();
             }
-            if(t.result.data.title != null && !Objects.equals(t.result.data.title, "")){
+            if (t.title != null && !Objects.equals(t.title, "")) {
                 PreparedStatement insertPurObj = con.prepareStatement(String.format("INSERT INTO %spurchase_object SET id_lot = ?, id_customer = ?, name = ?", Main.Prefix));
                 insertPurObj.setInt(1, idLot);
                 insertPurObj.setInt(2, idCustomer);
-                insertPurObj.setString(3, t.result.data.title);
+                insertPurObj.setString(3, t.title);
                 insertPurObj.executeUpdate();
                 insertPurObj.close();
 
@@ -314,7 +314,7 @@ class ParserTenders implements Iparser {
             }
 
             try {
-                av.AddVNum(con, String.valueOf(t.result.data.id));
+                av.AddVNum(con, String.valueOf(t.id));
             } catch (Exception e) {
                 Log.Logger("Ошибка добавления версий", e.getStackTrace());
             }
