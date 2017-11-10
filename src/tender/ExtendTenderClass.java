@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ExtendTenderClass {
+class ExtendTenderClass {
     static void TenderKwords(int idTender, Connection con, String NoticeVersion) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         StringBuilder s = new StringBuilder();
         PreparedStatement p1 = con.prepareStatement(String.format("SELECT DISTINCT po.name, po.okpd_name FROM %spurchase_object AS po LEFT JOIN %slot AS l ON l.id_lot = po.id_lot WHERE l.id_tender = ?", Main.Prefix, Main.Prefix));
@@ -102,7 +102,7 @@ public class ExtendTenderClass {
 
     }
 
-    static void AddVNum(Connection con, String id) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
+    static void AddVNum(Connection con, String id) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         int verNum = 1;
         PreparedStatement p1 = con.prepareStatement(String.format("SELECT id_tender FROM %stender WHERE purchase_number = ? ORDER BY UNIX_TIMESTAMP(date_version) ASC", Main.Prefix));
         p1.setString(1, id);

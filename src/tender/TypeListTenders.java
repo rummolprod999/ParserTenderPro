@@ -1,6 +1,6 @@
 package tender;
 
-public class TypeListTenders {
+class TypeListTenders {
     String success;
     Result result;
 }

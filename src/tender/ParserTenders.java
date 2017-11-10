@@ -46,44 +46,13 @@ class ParserTenders implements Iparser {
 
     }
 
+    @Override
     public void ParserTender(DataTen d, ITenderKwrds tk, IAddVerNum av) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        String urlTender = String.format("http://www.tender.pro/api/_tender.info.json?_key=1732ede4de680a0c93d81f01d7bac7d1&company_id=%d&id=%d", d.company_id, d.id);
-        String s = DownloadFile.DownloadFromUrl(urlTender);
-        if (s.equals("") || s.isEmpty()) {
-            Log.Logger("Получили пустую строку", urlTender);
-            return;
-        }
-        Gson gson = new Gson();
-        TypeTender tt = gson.fromJson(s, TypeTender.class);
-        DataTen t = null;
-        if (tt != null && tt.result != null && tt.result.data != null) {
-            t = tt.result.data;
-        }
-        if (tt.error != null && tt.error.message != null) {
-            Log.Logger("Неудачная попытка скачать тендер, берем объект из списка", d.id, d.company_id, tt.error.message);
-            t = d;
-        }
-        if (t == null) {
-            Log.Logger("Не создан объект тендера", s);
-            return;
-        }
-        try {
-            if (t.id == 0 || t.is_223fz == 1) {
-                Log.Logger("Нет номера у тендера или 223 тендер");
-                return;
-            }
-        } catch (Exception e) {
-            Log.Logger("Ошибки в объекте тендера", s, d.id, d.company_id);
-            return;
-        }
-        //System.out.println(t.id);
-        Date OpenDate = (t.open_date != null) ? GetDate(t.open_date) : new Date(0L);
-        Date CloseDate = (t.close_date != null) ? GetDate(t.close_date) : new Date(0L);
-        int cancelstatus = 0;
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         try (Connection con = DriverManager.getConnection(UrlConnect, Main.UserDb, Main.PassDb)) {
+            Date OpenDate = (d.open_date != null) ? GetDate(d.open_date) : new Date(0L);
             PreparedStatement stmt0 = con.prepareStatement(String.format("SELECT id_tender FROM %stender WHERE purchase_number = ? AND date_version = ? AND type_fz = 4", Main.Prefix));
-            stmt0.setString(1, String.valueOf(t.id));
+            stmt0.setString(1, String.valueOf(d.id));
             stmt0.setDate(2, new java.sql.Date(OpenDate.getTime()));
             ResultSet r = stmt0.executeQuery();
             if (r.next()) {
@@ -92,6 +61,39 @@ class ParserTenders implements Iparser {
                 //Log.Logger("Такой тендер уже есть в базе", String.valueOf(t.id));
                 return;
             }
+            String urlTender = String.format("http://www.tender.pro/api/_tender.info.json?_key=1732ede4de680a0c93d81f01d7bac7d1&company_id=%d&id=%d", d.company_id, d.id);
+            String s = DownloadFile.DownloadFromUrl(urlTender);
+            if (s.equals("") || s.isEmpty()) {
+                Log.Logger("Получили пустую строку", urlTender);
+                return;
+            }
+            Gson gson = new Gson();
+            TypeTender tt = gson.fromJson(s, TypeTender.class);
+            DataTen t = null;
+            if (tt != null && tt.result != null && tt.result.data != null) {
+                t = tt.result.data;
+            }
+            if (tt.error != null && tt.error.message != null) {
+                Log.Logger("Неудачная попытка скачать тендер, берем объект из списка", d.id, d.company_id, tt.error.message);
+                t = d;
+            }
+            if (t == null) {
+                Log.Logger("Не создан объект тендера", s);
+                return;
+            }
+            try {
+                if (t.id == 0 || t.is_223fz == 1) {
+                    Log.Logger("Нет номера у тендера или 223 тендер");
+                    return;
+                }
+            } catch (Exception e) {
+                Log.Logger("Ошибки в объекте тендера", s, d.id, d.company_id);
+                return;
+            }
+            //System.out.println(t.id);
+
+            Date CloseDate = (t.close_date != null) ? GetDate(t.close_date) : new Date(0L);
+            int cancelstatus = 0;
             PreparedStatement stmt = con.prepareStatement(String.format("SELECT id_tender, date_version FROM %stender WHERE purchase_number = ? AND cancel=0 AND type_fz = 4", Main.Prefix));
             stmt.setInt(1, t.id);
             ResultSet rs = stmt.executeQuery();
@@ -217,8 +219,7 @@ class ParserTenders implements Iparser {
                     rsoi.close();
                     stmtins.close();
                 }
-            }
-            catch(Exception ignored){
+            } catch (Exception ignored) {
 
             }
             int idTender = 0;
