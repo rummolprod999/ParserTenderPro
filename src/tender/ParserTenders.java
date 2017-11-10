@@ -56,11 +56,13 @@ class ParserTenders implements Iparser {
             stmt0.setDate(2, new java.sql.Date(OpenDate.getTime()));
             ResultSet r = stmt0.executeQuery();
             if (r.next()) {
-                stmt0.close();
                 r.close();
+                stmt0.close();
                 //Log.Logger("Такой тендер уже есть в базе", String.valueOf(t.id));
                 return;
             }
+            r.close();
+            stmt0.close();
             String urlTender = String.format("http://www.tender.pro/api/_tender.info.json?_key=1732ede4de680a0c93d81f01d7bac7d1&company_id=%d&id=%d", d.company_id, d.id);
             String s = DownloadFile.DownloadFromUrl(urlTender);
             if (s.equals("") || s.isEmpty()) {
