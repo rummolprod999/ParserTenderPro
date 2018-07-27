@@ -19,6 +19,7 @@ public class Main {
     public static String logPath;
     public static Date DateNow = new Date();
     public static int AddTender;
+    public static int UpdateTender;
 
     public static void main(String[] args) {
         Init();
@@ -73,6 +74,7 @@ public class Main {
             e.printStackTrace();
         }
         Log.Logger(String.format("Добавили тендеров %d", AddTender));
+        Log.Logger(String.format("Обновили тендеров %d", UpdateTender));
         Log.Logger("Конец парсинга");
     }
 }

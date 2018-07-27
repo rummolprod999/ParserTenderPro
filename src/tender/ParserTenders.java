@@ -35,7 +35,7 @@ class ParserTenders implements Iparser {
             System.exit(0);
         }
         for (DataTen d : Tlist.result.data
-                ) {
+        ) {
             try {
                 ParserTender(d, ExtendTenderClass::TenderKwords, ExtendTenderClass::AddVNum);
             } catch (Exception e) {
@@ -96,11 +96,13 @@ class ParserTenders implements Iparser {
 
             Date CloseDate = (t.close_date != null) ? GetDate(t.close_date) : new Date(0L);
             int cancelstatus = 0;
+            boolean updated = false;
             PreparedStatement stmt = con.prepareStatement(String.format("SELECT id_tender, date_version FROM %stender WHERE purchase_number = ? AND cancel=0 AND type_fz = 4", Main.Prefix));
             stmt.setInt(1, t.id);
             ResultSet rs = stmt.executeQuery();
             //stmt.executeQuery("SET GLOBAL sql_mode=''");
             while (rs.next()) {
+                updated = true;
                 int id_t = rs.getInt(1);
                 Date date_b = rs.getTimestamp(2);
                 /*System.out.println(date_b);
@@ -250,7 +252,11 @@ class ParserTenders implements Iparser {
             }
             rt.close();
             insertTender.close();
-            Main.AddTender++;
+            if (updated) {
+                Main.UpdateTender++;
+            } else {
+                Main.AddTender++;
+            }
             int idLot = 0;
             int LotNumber = 1;
             PreparedStatement insertLot = con.prepareStatement(String.format("INSERT INTO %slot SET id_tender = ?, lot_number = ?, currency = ?", Main.Prefix), Statement.RETURN_GENERATED_KEYS);
