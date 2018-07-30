@@ -50,10 +50,12 @@ class ParserTenders implements Iparser {
     public void ParserTender(DataTen d, ITenderKwrds tk, IAddVerNum av) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         try (Connection con = DriverManager.getConnection(UrlConnect, Main.UserDb, Main.PassDb)) {
-            Date OpenDate = (d.open_date != null) ? GetDate(d.open_date) : new Date(0L);
-            PreparedStatement stmt0 = con.prepareStatement(String.format("SELECT id_tender FROM %stender WHERE purchase_number = ? AND date_version = ? AND type_fz = 4", Main.Prefix));
+            Date OpenDate = (d.open_date != null) ? GetDate(d.open_date) : new Date();
+            Date CloseDate = (d.close_date != null) ? GetDate(d.close_date) : new Date(0L);
+            PreparedStatement stmt0 = con.prepareStatement(String.format("SELECT id_tender FROM %stender WHERE purchase_number = ? AND date_version = ? AND type_fz = 4 AND end_date = ?", Main.Prefix));
             stmt0.setString(1, String.valueOf(d.id));
             stmt0.setDate(2, new java.sql.Date(OpenDate.getTime()));
+            stmt0.setDate(3, new java.sql.Date(CloseDate.getTime()));
             ResultSet r = stmt0.executeQuery();
             if (r.next()) {
                 r.close();
@@ -94,7 +96,7 @@ class ParserTenders implements Iparser {
             }
             //System.out.println(t.id);
 
-            Date CloseDate = (t.close_date != null) ? GetDate(t.close_date) : new Date(0L);
+            CloseDate = (t.close_date != null) ? GetDate(t.close_date) : new Date(0L);
             int cancelstatus = 0;
             boolean updated = false;
             PreparedStatement stmt = con.prepareStatement(String.format("SELECT id_tender, date_version FROM %stender WHERE purchase_number = ? AND cancel=0 AND type_fz = 4", Main.Prefix));
