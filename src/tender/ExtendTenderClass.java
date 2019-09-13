@@ -71,7 +71,7 @@ class ExtendTenderClass {
             p4.close();
         }
         PreparedStatement p5 = con.prepareStatement(String.format("SELECT DISTINCT cus.inn, cus.full_name FROM %scustomer AS cus LEFT JOIN %spurchase_object AS po ON cus.id_customer = po.id_customer LEFT JOIN %slot AS l ON l.id_lot = po.id_lot WHERE l.id_tender = ?", Main.Prefix, Main.Prefix, Main.Prefix));
-        p5.setInt(1, idOrg);
+        p5.setInt(1, idTender);
         ResultSet r5 = p5.executeQuery();
         while (r5.next()) {
             String fullNameC;
