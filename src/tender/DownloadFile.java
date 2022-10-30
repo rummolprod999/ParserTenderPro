@@ -19,15 +19,19 @@ class DownloadFile {
             }
             try {
                 URL url = new URL(urls);
-                InetSocketAddress proxyAddress = new InetSocketAddress(pr[0], Integer.valueOf(pr[1]));
-                Proxy proxy = new Proxy(Proxy.Type.HTTP, proxyAddress);
-                HttpURLConnection uc = (HttpURLConnection) url.openConnection(proxy);
-                Authenticator.setDefault(new Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return (new PasswordAuthentication(pr[2], pr[3].toCharArray()));
-                    }
-                });
-                uc.connect();
+                if(Main.UseProxy){
+                    InetSocketAddress proxyAddress = new InetSocketAddress(pr[0], Integer.valueOf(pr[1]));
+                    Proxy proxy = new Proxy(Proxy.Type.HTTP, proxyAddress);
+                    HttpURLConnection uc = (HttpURLConnection) url.openConnection(proxy);
+                    Authenticator.setDefault(new Authenticator() {
+                        @Override
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return (new PasswordAuthentication(pr[2], pr[3].toCharArray()));
+                        }
+                    });
+                    uc.connect();
+                }
+
                 InputStream is = url.openStream();
                 BufferedReader br = new BufferedReader(new InputStreamReader(is));
                 String inputLine;
