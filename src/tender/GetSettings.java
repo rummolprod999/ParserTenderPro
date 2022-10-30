@@ -7,6 +7,9 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class GetSettings {
     public String Database;
@@ -17,6 +20,10 @@ public class GetSettings {
     public String PassDb;
     public String Server;
     public int Port;
+
+    public boolean UseProxy;
+
+    public Set<String> Proxy;
 
     public GetSettings() {
         try {
@@ -56,6 +63,12 @@ public class GetSettings {
                             break;
                         case "port":
                             Port = Integer.valueOf(set.getChildNodes().item(0).getTextContent());
+                            break;
+                        case "use_poxy":
+                            UseProxy = Boolean.valueOf(set.getChildNodes().item(0).getTextContent());
+                            break;
+                        case "proxy":
+                            Proxy = Arrays.stream(set.getChildNodes().item(0).getTextContent().split("\\n")).collect(Collectors.toSet());
                             break;
 
 

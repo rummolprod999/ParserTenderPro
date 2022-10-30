@@ -3,6 +3,7 @@ package tender;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
 import static java.lang.System.out;
 
@@ -21,6 +22,10 @@ public class Main {
     public static int AddTender;
     public static int UpdateTender;
 
+    public static boolean UseProxy;
+
+    public static Set<String> Proxy;
+
     public static void main(String[] args) {
         Init();
         ParserTenderPro();
@@ -38,6 +43,8 @@ public class Main {
         PassDb = set.PassDb;
         Server = set.Server;
         Port = set.Port;
+        UseProxy = set.UseProxy;
+        Proxy = set.Proxy;
         if (tempDirTenders.equals("") || tempDirTenders.isEmpty()) {
             out.println("Не задана папка для временных файлов, выходим из программы");
             System.exit(0);
