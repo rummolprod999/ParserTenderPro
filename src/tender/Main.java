@@ -26,6 +26,8 @@ public class Main {
 
     public static Set<String> Proxy;
 
+    public static int Offset = 0;
+
     public static void main(String[] args) {
         Init();
         ParserTenderPro();
@@ -44,6 +46,7 @@ public class Main {
         Server = set.Server;
         Port = set.Port;
         UseProxy = set.UseProxy;
+        Offset = set.Offset;
         Proxy = set.Proxy;
         if (tempDirTenders.equals("") || tempDirTenders.isEmpty()) {
             out.println("Не задана папка для временных файлов, выходим из программы");

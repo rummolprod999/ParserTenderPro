@@ -1,0 +1,12 @@
+
+™
+java:S1120"wMake this line start after 2 spaces instead of 4 in order to indent the code consistently. (Indentation level is at 2.)(·µœÒùÿÿÿÿ8×çµÉ1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·µœÒùÿÿÿÿ8ûîÉÂ0
+]
+java:S1106"AMove this left curly brace to the beginning of next line of code.(×ğÁ38ÛçµÉ1
+;
+java:S1451"&Add or update the header of this file.8ÛçµÉ1
+l	java:S103"KSplit this 167 characters long line (which is greater than 120 authorized).(·µœÒùÿÿÿÿ8ÛçµÉ1
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·µœÒùÿÿÿÿ8ƒïÉÂ0
+æ
+java:S1160"ÃRefactor this method to throw at most one checked exception instead of: java.sql.SQLException, java.lang.ClassNotFoundException, java.lang.IllegalAccessException, java.lang.InstantiationException(·µœÒùÿÿÿÿ8ßçµÉ1

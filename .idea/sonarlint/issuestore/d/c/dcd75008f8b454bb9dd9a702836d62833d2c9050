@@ -1,0 +1,115 @@
+
+”
+java:S1120"wMake this line start after 2 spaces instead of 4 in order to indent the code consistently. (Indentation level is at 2.)(õØÀÅ8ÎÔµÉ1
+™
+java:S1120"wMake this line start after 4 spaces instead of 8 in order to indent the code consistently. (Indentation level is at 2.)(¡»¢üùÿÿÿÿ8ÎÔµÉ1
+š
+java:S1120"xMake this line start after 6 spaces instead of 12 in order to indent the code consistently. (Indentation level is at 2.)(”ÌÛÿÿÿÿÿ8ÏÔµÉ1
+š
+java:S1120$"xMake this line start after 8 spaces instead of 16 in order to indent the code consistently. (Indentation level is at 2.)(ÈœÔºúÿÿÿÿ8ÏÔµÉ1
+›
+java:S1120&"yMake this line start after 10 spaces instead of 20 in order to indent the code consistently. (Indentation level is at 2.)(­ÊÃîûÿÿÿÿ8ÏÔµÉ1
+›
+java:S1120("yMake this line start after 14 spaces instead of 28 in order to indent the code consistently. (Indentation level is at 2.)(µ€Ô—ıÿÿÿÿ8ÏÔµÉ1
+–
+java:S1120+"yMake this line start after 14 spaces instead of 28 in order to indent the code consistently. (Indentation level is at 2.)(ú–úÙ8ÏÔµÉ1
+›
+java:S1120."yMake this line start after 14 spaces instead of 28 in order to indent the code consistently. (Indentation level is at 2.)(¸˜ºÌøÿÿÿÿ8ĞÔµÉ1
+›
+java:S11201"yMake this line start after 14 spaces instead of 28 in order to indent the code consistently. (Indentation level is at 2.)(¡»¢üùÿÿÿÿ8ĞÔµÉ1
+›
+java:S11202"yMake this line start after 16 spaces instead of 32 in order to indent the code consistently. (Indentation level is at 2.)(ê‰ÚÓşÿÿÿÿ8ĞÔµÉ1
+–
+java:S11204"yMake this line start after 16 spaces instead of 32 in order to indent the code consistently. (Indentation level is at 2.)(Öç’8ĞÔµÉ1
+›
+java:S11208"yMake this line start after 14 spaces instead of 28 in order to indent the code consistently. (Indentation level is at 2.)(Í©şıÿÿÿÿ8ÑÔµÉ1
+–
+java:S1120;"yMake this line start after 14 spaces instead of 28 in order to indent the code consistently. (Indentation level is at 2.)(»™éÜ8ÑÔµÉ1
+–
+java:S1120>"yMake this line start after 14 spaces instead of 28 in order to indent the code consistently. (Indentation level is at 2.)(³—£ö8ÑÔµÉ1
+›
+java:S1120A"yMake this line start after 14 spaces instead of 28 in order to indent the code consistently. (Indentation level is at 2.)(õ«ëŸüÿÿÿÿ8ÑÔµÉ1
+–
+java:S1120D"yMake this line start after 14 spaces instead of 28 in order to indent the code consistently. (Indentation level is at 2.)(‹¥í‘8ÑÔµÉ1
+›
+java:S1120G"yMake this line start after 14 spaces instead of 28 in order to indent the code consistently. (Indentation level is at 2.)(‰¤ü“ùÿÿÿÿ8ÒÔµÉ1
+š
+java:S1120R"xMake this line start after 6 spaces instead of 12 in order to indent the code consistently. (Indentation level is at 2.)(€ÉÔ…ıÿÿÿÿ8ÒÔµÉ1
+o	java:S134&"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(­ÊÃîûÿÿÿÿ8ÓÔµÉ1
+B
+java:S11663"%Either log or rethrow this exception.(”ı¾8ÕÔµÉ1
+B
+java:S1166Q"%Either log or rethrow this exception.(”ı¾8ÖÔµÉ1
+P
+java:S11411"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+j
+java:S1104"TMake Database a static final constant or non-public and provide accessors if needed.(õØÀÅ
+u
+java:S1104"ZMake tempDirTenders a static final constant or non-public and provide accessors if needed.(áÏîùÿÿÿÿ
+t
+java:S1104"YMake logDirTenders a static final constant or non-public and provide accessors if needed.(½¤ÕÜÿÿÿÿÿ
+f
+java:S1104"RMake Prefix a static final constant or non-public and provide accessors if needed.(•»
+h
+java:S1104"RMake UserDb a static final constant or non-public and provide accessors if needed.(ã®ÙÈ
+m
+java:S1104"RMake PassDb a static final constant or non-public and provide accessors if needed.(ÊêÎ²şÿÿÿÿ
+m
+java:S1104"RMake Server a static final constant or non-public and provide accessors if needed.(…ˆâüÿÿÿÿ
+f
+java:S1104"PMake Port a static final constant or non-public and provide accessors if needed.(Ü÷Ü×
+j
+java:S1104"TMake UseProxy a static final constant or non-public and provide accessors if needed.(ì»ÿ®
+g
+java:S1104"QMake Proxy a static final constant or non-public and provide accessors if needed.(íîÎ
+^
+java:S1106"AMove this left curly brace to the beginning of next line of code.(²·ãÒ8ÛÔµÉ1
+^
+java:S1106"AMove this left curly brace to the beginning of next line of code.(”æ†‡8ÛÔµÉ1
+c
+java:S1106"AMove this left curly brace to the beginning of next line of code.(¡»¢üùÿÿÿÿ8ÜÔµÉ1
+^
+java:S1106#"AMove this left curly brace to the beginning of next line of code.(Ù…¨Ê8ÜÔµÉ1
+]
+java:S1106%"AMove this left curly brace to the beginning of next line of code.(‚‡ğE8ÜÔµÉ1
+c
+java:S1106&"AMove this left curly brace to the beginning of next line of code.(­ÊÃîûÿÿÿÿ8ÜÔµÉ1
+c
+java:S11061"AMove this left curly brace to the beginning of next line of code.(¡»¢üùÿÿÿÿ8ÜÔµÉ1
+^
+java:S11063"AMove this left curly brace to the beginning of next line of code.(”ı¾8ÜÔµÉ1
+^
+java:S1106Q"AMove this left curly brace to the beginning of next line of code.(”ı¾8ÜÔµÉ1
+I
+java:S2755"3Disable access to external entities in XML parsing.(ÒŒß¿
+;
+java:S1451"&Add or update the header of this file.8á×µÉ1
+g	java:S103+"KSplit this 126 characters long line (which is greater than 120 authorized).(ú–úÙ8â×µÉ1
+l	java:S103."KSplit this 125 characters long line (which is greater than 120 authorized).(¸˜ºÌøÿÿÿÿ8ã×µÉ1
+l	java:S103G"KSplit this 137 characters long line (which is greater than 120 authorized).(‰¤ü“ùÿÿÿÿ8ã×µÉ1
+h	java:S116"SRename this field "Database" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õØÀÅ
+d	java:S116"QRename this field "Prefix" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•»
+f	java:S116"QRename this field "UserDb" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã®ÙÈ
+k	java:S116"QRename this field "PassDb" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊêÎ²şÿÿÿÿ
+k	java:S116"QRename this field "Server" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ˆâüÿÿÿÿ
+d	java:S116"ORename this field "Port" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü÷Ü×
+h	java:S116"SRename this field "UseProxy" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì»ÿ®
+e	java:S116"PRename this field "Proxy" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íîÎ
+~
+java:S1541"aThe Cyclomatic Complexity of this method "GetSettings" is 13 which is greater than 10 authorized.(”æ†‡8ğ×µÉ1
+]
+java:S1147S";Remove this call to "exit" or ensure it is really required.(ôá¤“úÿÿÿÿ8ó×µÉ1
+Q
+java:S2221Q"4Catch a list of specific exception subtypes instead.(”ı¾8õ×µÉ1
+O
+java:S1108Q"2Move this "catch" keyword to a new dedicated line.(”ı¾8ö×µÉ1
+‹
+java:S11510"iReduce this switch case number of lines from 6 to at most 5, for example by extracting code into methods.(Âá¤Úıÿÿÿÿ8€ØµÉ1
+<	java:S131&""Add a default case to this switch.(­ÊÃîûÿÿÿÿ
+Q
+java:S22213"4Catch a list of specific exception subtypes instead.(”ı¾8‰ØµÉ1
+O
+java:S11083"2Move this "catch" keyword to a new dedicated line.(”ı¾8‰ØµÉ1
+U
+java:S4248G"3Refactor this code to use a "static final" Pattern.(‰¤ü“ùÿÿÿÿ8‘ØµÉ1
+V	java:S125O"<This block of commented-out lines of code should be removed.(˜º„ùÿÿÿÿ

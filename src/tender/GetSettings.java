@@ -20,6 +20,7 @@ public class GetSettings {
     public String PassDb;
     public String Server;
     public int Port;
+    public int Offset = 0;
 
     public boolean UseProxy;
 
@@ -63,6 +64,9 @@ public class GetSettings {
                             break;
                         case "port":
                             Port = Integer.valueOf(set.getChildNodes().item(0).getTextContent());
+                            break;
+                        case "offset":
+                            Offset = Integer.valueOf(set.getChildNodes().item(0).getTextContent());
                             break;
                         case "use_poxy":
                             UseProxy = Boolean.valueOf(set.getChildNodes().item(0).getTextContent());

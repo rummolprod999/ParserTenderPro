@@ -1,0 +1,85 @@
+
+”
+java:S1120"wMake this line start after 2 spaces instead of 4 in order to indent the code consistently. (Indentation level is at 2.)(üí½Ñ8Ÿ¹µÉ1
+”
+java:S1120"wMake this line start after 4 spaces instead of 8 in order to indent the code consistently. (Indentation level is at 2.)(¤Œ‹·8¡¹µÉ1
+•
+java:S1120"xMake this line start after 6 spaces instead of 12 in order to indent the code consistently. (Indentation level is at 2.)(¨•±‹8¢¹µÉ1
+š
+java:S1120"xMake this line start after 8 spaces instead of 16 in order to indent the code consistently. (Indentation level is at 2.)(üÚ¡¡øÿÿÿÿ8¢¹µÉ1
+š
+java:S1120"xMake this line start after 8 spaces instead of 16 in order to indent the code consistently. (Indentation level is at 2.)(š±‰ôøÿÿÿÿ8£¹µÉ1
+–
+java:S1120"yMake this line start after 10 spaces instead of 20 in order to indent the code consistently. (Indentation level is at 2.)(µçº§8£¹µÉ1
+–
+java:S1120"yMake this line start after 22 spaces instead of 24 in order to indent the code consistently. (Indentation level is at 2.)(‡èú×8¤¹µÉ1
+–
+java:S1120"yMake this line start after 24 spaces instead of 28 in order to indent the code consistently. (Indentation level is at 2.)(ì£‡Œ8¤¹µÉ1
+–
+java:S1120'"yMake this line start after 10 spaces instead of 20 in order to indent the code consistently. (Indentation level is at 2.)(¥™÷±8¤¹µÉ1
+š
+java:S1120."xMake this line start after 8 spaces instead of 16 in order to indent the code consistently. (Indentation level is at 2.)(ëæûÿÿÿÿÿ8¥¹µÉ1
+”
+java:S11206"wMake this line start after 4 spaces instead of 8 in order to indent the code consistently. (Indentation level is at 2.)(‚úçË8¥¹µÉ1
+™
+java:S1120:"wMake this line start after 4 spaces instead of 8 in order to indent the code consistently. (Indentation level is at 2.)(çËêóşÿÿÿÿ8¦¹µÉ1
+o	java:S109"SAssign this magic number 10 to a well-named constant, and use the constant instead.(¨•±‹8ª¹µÉ1
+n	java:S109"RAssign this magic number 2 to a well-named constant, and use the constant instead.(ì£‡Œ8«¹µÉ1
+n	java:S109"RAssign this magic number 3 to a well-named constant, and use the constant instead.(ì£‡Œ8«¹µÉ1
+B
+java:S1166-"%Either log or rethrow this exception.(”ı¾8À¹µÉ1
+^
+java:S1106
+"AMove this left curly brace to the beginning of next line of code.(¡ú¿ê8Ø¹µÉ1
+^
+java:S1106"AMove this left curly brace to the beginning of next line of code.(üí½Ñ8Ù¹µÉ1
+c
+java:S1106"AMove this left curly brace to the beginning of next line of code.(˜ïˆÿÿÿÿÿ8Ù¹µÉ1
+^
+java:S1106"AMove this left curly brace to the beginning of next line of code.(¨•±‹8Ú¹µÉ1
+c
+java:S1106"AMove this left curly brace to the beginning of next line of code.(¡»¢üùÿÿÿÿ8Ú¹µÉ1
+c
+java:S1106"AMove this left curly brace to the beginning of next line of code.(ñ¨Âˆùÿÿÿÿ8Û¹µÉ1
+^
+java:S1106"AMove this left curly brace to the beginning of next line of code.(é´±ˆ8Û¹µÉ1
+^
+java:S1106"AMove this left curly brace to the beginning of next line of code.(‡èú×8Ü¹µÉ1
+c
+java:S1106&"AMove this left curly brace to the beginning of next line of code.(ÅÁ²Ñıÿÿÿÿ8İ¹µÉ1
+^
+java:S1106-"AMove this left curly brace to the beginning of next line of code.(”ı¾8İ¹µÉ1
+^
+java:S11065"AMove this left curly brace to the beginning of next line of code.(Àİığ8Ş¹µÉ1
+c
+java:S11069"AMove this left curly brace to the beginning of next line of code.(™²åÀûÿÿÿÿ8Ş¹µÉ1
+h
+java:S2259"RA "NullPointerException" could be thrown; "getRandomSetElement()" can return null.(¤Œ‹·
+_
+java:S2095#"IUse try-with-resources or close this "InputStream" in a "finally" clause.(‘ƒøó
+g
+java:S2095$"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(Ó•£¹øÿÿÿÿ
+;
+java:S1451"&Add or update the header of this file.8°ÀµÉ1
+J
+java:S2208".Explicitly import the specific classes needed.(¬›ãD8»ÀµÉ1
+J
+java:S2208".Explicitly import the specific classes needed.(Ğ‡8»ÀµÉ1
+P
+java:S1118
+":Add a private constructor to hide the implicit public one.(¡ú¿ê
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üí½Ñ
+Q
+java:S2221-"4Catch a list of specific exception subtypes instead.(”ı¾8ÇÁµÉ1
+O
+java:S1108-"2Move this "catch" keyword to a new dedicated line.(”ı¾8ÉÁµÉ1
+_
+java:S1941"=Move the declaration of "uc" closer to the code that uses it.(¡Æİµøÿÿÿÿ8ÍÁµÉ1
+b
+java:S1943$"@Remove this use of constructor "InputStreamReader(InputStream)".(Ó•£¹øÿÿÿÿ8ãÁµÉ1
+Q	java:S125/"<This block of commented-out lines of code should be removed.(†€éˆ
+c	java:S1005"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Àİığ
+M
+java:S19436"0Remove this use of constructor "String(byte[])".(‚úçË8ïÁµÉ1
+9
+java:S2119:"Save and re-use this "Random".(çËêóşÿÿÿÿ

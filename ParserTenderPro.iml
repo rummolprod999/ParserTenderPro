@@ -11,6 +11,9 @@
     <orderEntry type="library" exported="" name="com.google.code.gson:gson:2.8.2" level="project" />
     <orderEntry type="library" exported="" name="org.jsoup:jsoup:1.11.1" level="project" />
   </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="71653115-99f4-4e2d-9304-4546a6c94abb" />
+  </component>
   <component name="sonarModuleSettings">
     <option name="localAnalysisScripName" value="&lt;PROJECT&gt;" />
     <option name="serverName" value="&lt;PROJECT&gt;" />

@@ -1,0 +1,15 @@
+
+q	java:S116"URename this field "company_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Ğçâ8¤ï”ÉÂ0
+o	java:S116"SRename this field "is_223fz" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²àÒ8¦ï”ÉÂ0
+u	java:S116"TRename this field "ship_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èâÓúùÿÿÿÿ8§ï”ÉÂ0
+u	java:S116"TRename this field "open_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²¯â‚üÿÿÿÿ8©ï”ÉÂ0
+v	java:S116"URename this field "close_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üÏò€øÿÿÿÿ8ªï”ÉÂ0
+q	java:S116"VRename this field "finish_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ©¡`8¬ï”ÉÂ0
+s	java:S116"WRename this field "company_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒšØö8®ï”ÉÂ0
+u	java:S116"TRename this field "type_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë‚ª©úÿÿÿÿ8¯ï”ÉÂ0
+s	java:S116"RRename this field "type_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂÖë¡øÿÿÿÿ8±ï”ÉÂ0
+w	java:S116"[Rename this field "delivery_address" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×ñ©Ú8³ï”ÉÂ0
+t	java:S116"XRename this field "currency_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š®’8´ï”ÉÂ0
+y	java:S1164"XRename this field "address_legal" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²³¿§øÿÿÿÿ8¼ï”ÉÂ0
+v	java:S1165"URename this field "title_full" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ÑÇÊüÿÿÿÿ8¾ï”ÉÂ0
+s	java:S1168"WRename this field "country_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìÜÉ­8Àï”ÉÂ0

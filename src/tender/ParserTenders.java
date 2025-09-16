@@ -15,33 +15,31 @@ class ParserTenders implements Iparser {
     private String UrlConnect = String.format("jdbc:mysql://%s:%d/%s?jdbcCompliantTruncation=false&useUnicode=true&characterEncoding=utf-8", Main.Server, Main.Port, Main.Database);
 
     public void Parser() {
-        /*String s = "";
-        try {
-            s = DownloadFile.ReadJsonFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(s);*/
-        String urlGetTenders = "http://www.tender.pro/api/_info.tenderlist_by_set.json?_key=1732ede4de680a0c93d81f01d7bac7d1&set_type_id=2&set_id=2&max_rows=1000&open_only=t";
-        String s = DownloadFile.DownloadFromUrl(urlGetTenders);
-        if (s.equals("") || s.isEmpty()) {
-            Log.Logger("Получили пустую строку", urlGetTenders);
-            System.exit(0);
-        }
-        Gson gson = new Gson();
-        TypeListTenders Tlist = gson.fromJson(s, TypeListTenders.class);
-        if (Tlist.result == null || Tlist.result.data == null) {
-            Log.Logger("Не найден список тендеров", urlGetTenders);
-            System.exit(0);
-        }
-        for (DataTen d : Tlist.result.data
-        ) {
-            try {
-                ParserTender(d, ExtendTenderClass::TenderKwords, ExtendTenderClass::AddVNum);
-            } catch (Exception e) {
-                Log.Logger("Ошибка при парсинге тендера", e.getStackTrace(), e);
+        for (int i = 0; i <= Main.Offset; i++) {
+            String urlGetTenders = "https://www.tender.pro/api/_info.tenderlist_by_set.json?_key=1732ede4de680a0c93d81f01d7bac7d1&set_type_id=2&set_id=2&max_rows=1000&open_only=t&offset=" + i;
+            String s = DownloadFile.DownloadFromUrl(urlGetTenders);
+            if (s.equals("") || s.isEmpty()) {
+                Log.Logger("Получили пустую строку", urlGetTenders);
+                System.exit(0);
             }
-            //break;
+            Gson gson = new Gson();
+            TypeListTenders Tlist = gson.fromJson(s, TypeListTenders.class);
+            if (Tlist.result == null || Tlist.result.data == null) {
+                Log.Logger("Не найден список тендеров", urlGetTenders);
+                System.exit(0);
+            }
+            if (Tlist.result.data.length == 0) {
+                break;
+            }
+            for (DataTen d : Tlist.result.data
+            ) {
+                try {
+                    ParserTender(d, ExtendTenderClass::TenderKwords, ExtendTenderClass::AddVNum);
+                } catch (Exception e) {
+                    Log.Logger("Ошибка при парсинге тендера", e.getStackTrace(), e);
+                }
+                //break;
+            }
         }
 
     }
@@ -65,7 +63,7 @@ class ParserTenders implements Iparser {
             }
             r.close();
             stmt0.close();
-            String urlTender = String.format("http://www.tender.pro/api/_tender.info.json?_key=1732ede4de680a0c93d81f01d7bac7d1&company_id=%d&id=%d", d.company_id, d.id);
+            String urlTender = String.format("https://www.tender.pro/api/_tender.info.json?_key=1732ede4de680a0c93d81f01d7bac7d1&company_id=%d&id=%d", d.company_id, d.id);
             String s = DownloadFile.DownloadFromUrl(urlTender);
             if (s.equals("") || s.isEmpty()) {
                 Log.Logger("Получили пустую строку", urlTender);

@@ -1,0 +1,132 @@
+
+”
+java:S1120"wMake this line start after 2 spaces instead of 4 in order to indent the code consistently. (Indentation level is at 2.)(å¹è£8¬ØµÉ1
+”
+java:S1120"wMake this line start after 4 spaces instead of 8 in order to indent the code consistently. (Indentation level is at 2.)(˜êŞ‰8¬ØµÉ1
+•
+java:S1120"xMake this line start after 6 spaces instead of 12 in order to indent the code consistently. (Indentation level is at 2.)(½ÕÏ”8­ØµÉ1
+•
+java:S1120"xMake this line start after 8 spaces instead of 16 in order to indent the code consistently. (Indentation level is at 2.)(×æ«¹8­ØµÉ1
+š
+java:S1120"xMake this line start after 8 spaces instead of 16 in order to indent the code consistently. (Indentation level is at 2.)(•¶™ùÿÿÿÿ8­ØµÉ1
+š
+java:S1120""xMake this line start after 6 spaces instead of 12 in order to indent the code consistently. (Indentation level is at 2.)(–­â€ûÿÿÿÿ8­ØµÉ1
+š
+java:S1120$"xMake this line start after 8 spaces instead of 16 in order to indent the code consistently. (Indentation level is at 2.)(Û‰€şÿÿÿÿ8­ØµÉ1
+•
+java:S1120/"xMake this line start after 6 spaces instead of 12 in order to indent the code consistently. (Indentation level is at 2.)(ŒÁ´ì8­ØµÉ1
+š
+java:S11206"xMake this line start after 6 spaces instead of 12 in order to indent the code consistently. (Indentation level is at 2.)(ÚÊé¼úÿÿÿÿ8®ØµÉ1
+š
+java:S1120:"xMake this line start after 8 spaces instead of 16 in order to indent the code consistently. (Indentation level is at 2.)(µ½¸¯ûÿÿÿÿ8®ØµÉ1
+–
+java:S1120<"yMake this line start after 10 spaces instead of 20 in order to indent the code consistently. (Indentation level is at 2.)(¨â¸8®ØµÉ1
+›
+java:S1120@"yMake this line start after 10 spaces instead of 20 in order to indent the code consistently. (Indentation level is at 2.)(°§¤Ôøÿÿÿÿ8®ØµÉ1
+š
+java:S1120M"xMake this line start after 6 spaces instead of 12 in order to indent the code consistently. (Indentation level is at 2.)(È®ˆƒúÿÿÿÿ8®ØµÉ1
+•
+java:S1120P"xMake this line start after 8 spaces instead of 16 in order to indent the code consistently. (Indentation level is at 2.)(Ö­Âñ8¯ØµÉ1
+•
+java:S1120U"xMake this line start after 8 spaces instead of 16 in order to indent the code consistently. (Indentation level is at 2.)(šØÿµ8¯ØµÉ1
+™
+java:S1120j"wMake this line start after 4 spaces instead of 8 in order to indent the code consistently. (Indentation level is at 2.)(„µ»íúÿÿÿÿ8¯ØµÉ1
+š
+java:S1120o"xMake this line start after 6 spaces instead of 12 in order to indent the code consistently. (Indentation level is at 2.)(²½Ü§úÿÿÿÿ8¯ØµÉ1
+s	java:S109"RAssign this magic number 2 to a well-named constant, and use the constant instead.(´³¥úÿÿÿÿ8°ØµÉ1
+n	java:S109/"RAssign this magic number 2 to a well-named constant, and use the constant instead.(ŒÁ´ì8°ØµÉ1
+s	java:S109:"RAssign this magic number 2 to a well-named constant, and use the constant instead.(µ½¸¯ûÿÿÿÿ8±ØµÉ1
+s	java:S109S"RAssign this magic number 2 to a well-named constant, and use the constant instead.(ˆöÿÄøÿÿÿÿ8²ØµÉ1
+n	java:S109c"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¦ÈÎ‘8²ØµÉ1
+n	java:S109r"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¾êò†8²ØµÉ1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å¹è£8ÛÃÉÂ0
+r	java:S117o"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²½Ü§úÿÿÿÿ8İÃÉÂ0
+c
+java:S1106
+"AMove this left curly brace to the beginning of next line of code.(Êğÿöùÿÿÿÿ8»ØµÉ1
+^
+java:S1106"AMove this left curly brace to the beginning of next line of code.(å¹è£8¼ØµÉ1
+c
+java:S1106"AMove this left curly brace to the beginning of next line of code.(ÑÙğşÿÿÿÿ8½ØµÉ1
+c
+java:S1106"AMove this left curly brace to the beginning of next line of code.(÷¿ıÏıÿÿÿÿ8¿ØµÉ1
+^
+java:S1106"AMove this left curly brace to the beginning of next line of code.(”£ÌÄ8ÀØµÉ1
+c
+java:S1106!"AMove this left curly brace to the beginning of next line of code.(¸Î©Ãşÿÿÿÿ8ÁØµÉ1
+^
+java:S1106#"AMove this left curly brace to the beginning of next line of code.(’ÎÂ½8ÃØµÉ1
+c
+java:S1106."AMove this left curly brace to the beginning of next line of code.(‡‹ÚÜÿÿÿÿÿ8ÄØµÉ1
+c
+java:S11065"AMove this left curly brace to the beginning of next line of code.(±“ÒÜÿÿÿÿÿ8ÆØµÉ1
+^
+java:S11069"AMove this left curly brace to the beginning of next line of code.(Íô³å8ÆØµÉ1
+c
+java:S1106;"AMove this left curly brace to the beginning of next line of code.(îªşíıÿÿÿÿ8ÇØµÉ1
+c
+java:S1106?"AMove this left curly brace to the beginning of next line of code.(ìˆÉÅøÿÿÿÿ8ÇØµÉ1
+]
+java:S1106L"AMove this left curly brace to the beginning of next line of code.(İ’ÿX8ÈØµÉ1
+c
+java:S1106O"AMove this left curly brace to the beginning of next line of code.(‹šõÀıÿÿÿÿ8ÈØµÉ1
+c
+java:S1106T"AMove this left curly brace to the beginning of next line of code.(€·øõüÿÿÿÿ8ÈØµÉ1
+^
+java:S1106i"AMove this left curly brace to the beginning of next line of code.(˜Ø«‘8ÈØµÉ1
+c
+java:S1106n"AMove this left curly brace to the beginning of next line of code.(ÑÙğşÿÿÿÿ8ÉØµÉ1
+l
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(æ¬Ï‰8­êÉÂ0
+l
+java:S2095a"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(»®È´8¯êÉÂ0
+l
+java:S2095I"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(£ùªı8®êÉÂ0
+l
+java:S2095k"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÄÚß‚8°êÉÂ0
+q
+java:S2095p"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ó²Çìùÿÿÿÿ8°êÉÂ0
+k
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(†¹×	8¦êÉÂ0
+q
+java:S20956"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÚÊé¼úÿÿÿÿ8°êÉÂ0
+l
+java:S2095+"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(æİ©Â8¯êÉÂ0
+;
+java:S1451"&Add or update the header of this file.8çµÉ1
+g	java:S103"KSplit this 174 characters long line (which is greater than 120 authorized).(å¹è£8çµÉ1
+f	java:S103"KSplit this 230 characters long line (which is greater than 120 authorized).(†¹×	8çµÉ1
+g	java:S103"KSplit this 147 characters long line (which is greater than 120 authorized).(æ¬Ï‰8çµÉ1
+g	java:S103+"KSplit this 159 characters long line (which is greater than 120 authorized).(æİ©Â8çµÉ1
+l	java:S1036"KSplit this 149 characters long line (which is greater than 120 authorized).(ÚÊé¼úÿÿÿÿ8çµÉ1
+g	java:S103I"KSplit this 308 characters long line (which is greater than 120 authorized).(£ùªı8çµÉ1
+g	java:S103a"KSplit this 141 characters long line (which is greater than 120 authorized).(»®È´8çµÉ1
+g	java:S103i"KSplit this 144 characters long line (which is greater than 120 authorized).(˜Ø«‘8çµÉ1
+g	java:S103k"KSplit this 182 characters long line (which is greater than 120 authorized).(ÄÚß‚8çµÉ1
+l	java:S103p"KSplit this 159 characters long line (which is greater than 120 authorized).(Ó²Çìùÿÿÿÿ8çµÉ1
+\
+java:S1118
+":Add a private constructor to hide the implicit public one.(Êğÿöùÿÿÿÿ8ôêÉÂ0
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å¹è£8÷êÉÂ0
+o
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(å¹è£8†ëÉÂ0
+
+java:S1541"bThe Cyclomatic Complexity of this method "TenderKwords" is 14 which is greater than 10 authorized.(å¹è£8§çµÉ1
+ƒ	java:S138"gThis method has 91 lines, which is greater than the 75 lines authorized. Split it into smaller methods.(å¹è£8§çµÉ1
+–
+java:S1130"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(å¹è£8•ëÉÂ0
+–
+java:S1130"yRemove the declaration of thrown exception 'java.lang.IllegalAccessException', as it cannot be thrown from method's body.(å¹è£8˜ëÉÂ0
+–
+java:S1130"yRemove the declaration of thrown exception 'java.lang.InstantiationException', as it cannot be thrown from method's body.(å¹è£8šëÉÂ0
+P
+java:S4248]"3Refactor this code to use a "static final" Pattern.(µ–î³8ÂçµÉ1
+j
+java:S5867]"MEnable the "UNICODE_CHARACTER_CLASS" flag or use a Unicode-aware alternative.(µ–î³8ÅçµÉ1
+j	java:S100i"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜Ø«‘8¸îÉÂ0
+–
+java:S1130i"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(˜Ø«‘8ºîÉÂ0
+–
+java:S1130i"yRemove the declaration of thrown exception 'java.lang.IllegalAccessException', as it cannot be thrown from method's body.(˜Ø«‘8ºîÉÂ0
+–
+java:S1130i"yRemove the declaration of thrown exception 'java.lang.InstantiationException', as it cannot be thrown from method's body.(˜Ø«‘8»îÉÂ0
